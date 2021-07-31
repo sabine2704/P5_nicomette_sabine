@@ -1,0 +1,104 @@
+body.container-fluid {
+    padding: inherit;
+    background-color: rgba(#20c997, 0.3);
+  }
+  
+  .entete {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px;
+    .logo {
+      a {
+        text-decoration: none;
+        color: black;
+        display: flex;
+      }
+      .col img {
+        width: 60px;
+      }
+      h1 {
+        font-family: "Galada", cursive;
+        font-size: 2.2rem;
+        align-self: center;
+        margin: 0;
+      }
+    }
+    .panier {
+      font-size: 30px;
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  div.row {
+    margin: 0;
+    .col.col-4 {
+      display: none;
+      padding: 0;
+      @media (min-width: 992px) {
+        display: flex;
+      }
+      img {
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+    .sm-col-12.blocPresentation {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      h2 {
+        font-family: "Courgette", cursive;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      .presentation {
+        font-family: "courgette", cursive;
+        font-size: 1.2rem;
+        text-align: justify;
+      }
+    }
+  }
+  
+  div.collection {
+    box-shadow: 4px 5px 15px 5px #558bff;
+    height: 300px;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+    h2 {
+      font-family: "Courgette", cursive;
+      font-weight: bold;
+      text-align: center;
+      padding: 20px 0;
+    }
+  }
+  
+  footer {
+    font-family: "Facility", cursive;
+    display: flex;
+    justify-content: space-around;
+    @media (max-width: 575.98px) {
+      flex-direction: column;
+    }
+    .adresse,
+    .contact {
+      text-align: center;
+    }
+    h3 {
+      font-weight: bold;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+  }
+  
