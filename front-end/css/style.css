@@ -103,95 +103,25 @@ div.row .sm-col-12.blocPresentation .presentation {
   text-align: justify;
 }
 
-.collection {
+div.collection {
   -webkit-box-shadow: 4px 5px 15px 5px #558bff;
           box-shadow: 4px 5px 15px 5px #558bff;
-  height: auto;
-  width: 90%;
-  margin: 30px auto;
+  height: 300px;
+  width: 95%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.collection h2 {
-  font-family: "Courgette";
-  font-weight: bold;
-  text-align: center;
-  padding: 20px 0;
-}
-
-#teddies {
-  padding-left: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin: 30px auto;
 }
 
-#teddies .boxProduits {
-  background-color: white;
-  max-width: 300px;
-  width: auto;
-  height: 300px;
-  -webkit-box-shadow: 1px 1px 12px #797b80;
-          box-shadow: 1px 1px 12px #797b80;
-  margin: auto;
-  border-radius: 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 20px;
-}
-
-#teddies .boxProduits .image {
-  max-width: 300px;
-  height: 240px;
-}
-
-#teddies .boxProduits .image img {
-  height: 240px;
-  width: 100%;
-  border-radius: 25px 25px 0 0;
-  margin: 0;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-#teddies .boxProduits .description {
-  max-width: 300px;
-  height: 60px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: #558bff;
-  border-radius: 0 0 25px 25px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 15px;
-}
-
-#teddies .boxProduits .description .nom, #teddies .boxProduits .description .prix {
-  font-size: 1.5rem;
-  color: white;
-  font-family: "facility";
+div.collection h2 {
+  font-family: "Courgette", cursive;
   font-weight: bold;
+  text-align: center;
+  padding: 20px 0;
 }
 
 footer {
