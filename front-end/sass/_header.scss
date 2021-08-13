@@ -1,0 +1,27 @@
+.entete {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 10px;
+  .logo {
+    a {
+      text-decoration: none;
+      color: black;
+      display: flex;
+    }
+    .col img {
+      width: 60px;
+    }
+    h1 {
+      font-family: "Galada", cursive;
+      font-size: 2.2rem;
+      align-self: center;
+      margin: 0;
+    }
+  }
+  .panier {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+  }
+}
