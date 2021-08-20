@@ -40,6 +40,10 @@
           align-items: center;
 }
 
+.entete .panier .fas {
+  color: black;
+}
+
 footer {
   font-family: "Facility", cursive;
   display: -webkit-box;
@@ -286,7 +290,7 @@ div.row .sm-col-12.blocPresentation .presentation {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 400px;
+  height: 500px;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
@@ -315,11 +319,27 @@ div.row .sm-col-12.blocPresentation .presentation {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
 }
 
-input#validation {
+.container_produit .container_details .commande {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  row-gap: 10px;
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
+}
+
+input#envoyer {
   background-color: #1356e7;
   color: white;
   border: #1156eb;
+  padding: 5px 10px;
 }
 /*# sourceMappingURL=style.css.map */
