@@ -1,166 +1,295 @@
-// main de la page index
-
+//---------------------Main de la page index-----------------------------
 body.container-fluid {
-   padding: inherit;
-   main{
-      background-color: rgba(#20c997, 0.3);
-   }
+  padding: inherit;
+  main {
+    background-color: rgba(#20c997, 0.3);
+  }
 }
 
 div.row {
-   margin: 0;
-   .col.col-4 {
-      display: none;
-      padding: 0;
-      @media (min-width: 992px) {
-         display: flex;
-      }
-      img {
-         object-fit: cover;
-         width: 100%;
-      }
-   }
-   .sm-col-12.blocPresentation {
-      padding: 30px;
+  margin: 0;
+  .col.col-4 {
+    display: none;
+    padding: 0;
+    @media (min-width: 992px) {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+    }
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+  .sm-col-12.blocPresentation {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    h2 {
+      font-family: "Courgette", cursive;
+      font-weight: bold;
+      display: flex;
       justify-content: center;
-      h2 {
-         font-family: "Courgette", cursive;
-         font-weight: bold;
-         display: flex;
-         justify-content: center;
-         margin-bottom: 20px;
-      }
-      .presentation {
-         font-family: "courgette", cursive;
-         font-size: 1.2rem;
-         text-align: justify;
-      }
+      margin-bottom: 20px;
+    }
+    .presentation {
+      font-family: "Courgette", cursive;
+      font-size: 1.2rem;
+      text-align: justify;
+    }
   }
 }
 
 .collection {
-   height: auto;
-   width: 90%;
-   margin: auto;
-   padding: 30px 0;
-   display: flex;
-   flex-direction: column;
-   h2 {
-      font-family: "Courgette";
-      font-weight: bold;
-      text-align: center;
-      padding: 20px 0;
-   }
+  height: auto;
+  width: 90%;
+  margin: auto;
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+  h2 {
+    font-family: "Courgette";
+    font-weight: bold;
+    text-align: center;
+    padding: 20px 0;
+  }
 }
 
 #teddies {
-   padding-left: 0;
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-   .boxProduits {
-      background-color: white;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .boxProduits {
+    background-color: white;
+    max-width: 300px;
+    width: auto;
+    height: 300px;
+    margin: auto;
+    box-shadow: 1px 1px 10px #8da4e0;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    a {
+      text-decoration: none;
+    }
+    .container {
+      padding: 0;
+    }
+    .image_produits {
       max-width: 300px;
-      width: auto;
-      height: 300px;
-      margin: auto;
-      box-shadow: 1px 1px 10px #8da4e0;
-      border-radius: 25px;
+      height: 240px;
+      img {
+        height: 240px;
+        width: 100%;
+        border-radius: 25px 25px 0 0;
+        margin: 0;
+        object-fit: cover;
+      }
+    }
+    .description {
+      max-width: 300px;
+      height: 60px;
       display: flex;
-      flex-direction: column;
-      margin: 20px;
-      a{
-         text-decoration: none;
-      }
-      .container {
-         padding: 0;
-      }
-      .image_produits {
-         max-width: 300px;
-         height: 240px;
-         img {
-         height: 240px;
-         width: 100%;
-         border-radius: 25px 25px 0 0;
-         margin: 0;
-         object-fit: cover;
-         }
-      }
-      .description {
-         max-width: 300px;
-         height: 60px;
-         display: flex;
-         background-color: #558bff;
-         border-radius: 0 0 25px 25px;
-         justify-content: space-between;
-         align-items: center;
-         padding: 15px;
-         column-gap: 15px;
-         .nom, .prix{
-         font-size: 1.5rem;
-         color: white;
-         font-family: "facility";
-         font-weight: bold;
-         }
-      }
-   }
-}
-
-// main de la page produit
-.container_produit{
-   display: flex;
-   flex-direction: column;
-   padding: 50px;
-   font-family: "Courgette";
-   font-size: 1.2rem;
-   @media  (min-width: 992px) {
-      flex-direction: row;
+      background-color: #558bff;
+      border-radius: 0 0 25px 25px;
+      justify-content: space-between;
       align-items: center;
-   }
-   .image_produit{
-      padding: 10px;
-      max-width: 600px;
-      max-height: 600px;
-      img{
-         width: 100%;
-         object-fit: cover;
+      padding: 15px;
+      column-gap: 15px;
+      .nom,
+      .prix {
+        font-size: 1.5rem;
+        color: white;
+        font-family: "Facility";
+        font-weight: bold;
       }
-   }
-   .container_details{
-      display: flex;
-      flex-direction: column;
-      height: 500px;
-      justify-content: space-around;
-      @media  (min-width: 992px) {
-         display: flex;
-         flex-direction: column;
-         height: 370px;
-         justify-content: space-around;
-      }
-      .nom{
-         font-weight: bold;
-         font-size: 1.5rem;
-      }
-      .couleurs{
-         display: flex;
-         flex-wrap: wrap;
-         column-gap: 10px;
-      }
-      .commande{
-         display: flex;
-         flex-wrap: wrap;
-         row-gap: 10px;
-         column-gap: 10px;
-      }
-   }
+    }
+  }
 }
 
-input#envoyer{
-   background-color: #1356e7;
-   color: white;
-   border: rgb(17, 86, 235);
-   padding: 5px 10px;
+//-----------------------------Main de la page produit------------------------------
+.container_produit {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  font-family: "Courgette";
+  font-size: 1.2rem;
+  @media (min-width: 992px) {
+    flex-direction: row;
+    align-items: center;
+  }
+  .image_produit {
+    padding: 10px;
+    max-width: 600px;
+    max-height: 600px;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .container_details {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    justify-content: space-around;
+    @media (min-width: 992px) {
+      display: flex;
+      flex-direction: column;
+      height: 370px;
+      justify-content: space-around;
+    }
+    .nom {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .couleurs {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 10px;
+    }
+    .commande {
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: 10px;
+      column-gap: 10px;
+    }
+  }
+}
+
+input#envoyer {
+  background-color: #1356e7;
+  color: white;
+  border: rgb(17, 86, 235);
+  padding: 5px 10px;
+}
+
+//-------------------------Main de la page produit--------------------------------
+#panier {
+  font-family: "Facility";
+  padding: 30px 10px;
+  h2,
+  h3 {
+    font-weight: bold;
+    text-align: center;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 22px;
+  }
+  .panier_vide {
+    border: 8px inset rgba(76, 105, 167, 0.7);
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    p {
+      align-items: center;
+      display: flex;
+      margin: 0;
+      padding: 10px;
+      font-family: "Facility";
+      font-size: 20px;
+      font-style: oblique;
+      font-weight: bold;
+    }
+  }
+  .container_recap_produit {
+    border: 2px solid rgb(79, 180, 238);
+    border-radius: 10px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    .recap_produit {
+      display: flex;
+      justify-content: space-between;
+      .designation {
+        display: flex;
+        width: 100%;
+        padding: 5px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+      }
+    }
+    .prix_total {
+      font-weight: bold;
+      text-align: center;
+      background-color: rgb(79, 180, 238);
+      border-radius: 0 0 10px 10px;
+      color: white;
+      padding: 5px 0;
+      margin: -2px;
+    }
+  }
+  .vider_panier {
+    display: flex;
+    justify-content: center;
+    button {
+      font-weight: bold;
+      background-color: rgb(125, 206, 238);
+      border: 1px solid rgb(24, 125, 184);
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+  }
+  .total_commande {
+    font-weight: bold;
+    font-size: 18px;
+    font-style: oblique;
+    color: white;
+    background-color: rgb(39, 154, 221);
+    box-shadow: 1px 1px 5px 4px rgba(79, 180, 238, 0.65);
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+  }
+}
+
+.contact {
+  margin-top: 20px;
+  .formulaire {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .btn_commander {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    #submit {
+      font-weight: bold;
+      background-color: rgb(125, 206, 238);
+      border: 1px solid rgb(24, 125, 184);
+      border-radius: 10px;
+      width: 200px;
+      text-align: center;
+      padding: 5px;
+      outline: none;
+    }
+  }
+}
+
+//---------------------Main Confirmation de commande----------------------
+#confirmation{
+  padding: 40px 10px;
+  display: flex;
+  flex-direction: column;
+  h2{
+    font-family: "Courgette";
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+  }
+  .container_confirmation{
+    display: flex;
+    flex-direction: column;
+    gap : 20px;
+    font-family: "facility";
+    font-size: 18px;
+    margin: auto;
+  }
 }

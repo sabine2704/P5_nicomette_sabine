@@ -140,7 +140,7 @@ div.row .sm-col-12.blocPresentation h2 {
 }
 
 div.row .sm-col-12.blocPresentation .presentation {
-  font-family: "courgette", cursive;
+  font-family: "Courgette", cursive;
   font-size: 1.2rem;
   text-align: justify;
 }
@@ -238,10 +238,11 @@ div.row .sm-col-12.blocPresentation .presentation {
           column-gap: 15px;
 }
 
-#teddies .boxProduits .description .nom, #teddies .boxProduits .description .prix {
+#teddies .boxProduits .description .nom,
+#teddies .boxProduits .description .prix {
   font-size: 1.5rem;
   color: white;
-  font-family: "facility";
+  font-family: "Facility";
   font-weight: bold;
 }
 
@@ -341,5 +342,195 @@ input#envoyer {
   color: white;
   border: #1156eb;
   padding: 5px 10px;
+}
+
+#panier {
+  font-family: "Facility";
+  padding: 30px 10px;
+}
+
+#panier h2,
+#panier h3 {
+  font-weight: bold;
+  text-align: center;
+}
+
+#panier h2 {
+  font-size: 30px;
+}
+
+#panier h3 {
+  font-size: 22px;
+}
+
+#panier .panier_vide {
+  border: 8px inset rgba(76, 105, 167, 0.7);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 30px 0;
+}
+
+#panier .panier_vide p {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  padding: 10px;
+  font-family: "Facility";
+  font-size: 20px;
+  font-style: oblique;
+  font-weight: bold;
+}
+
+#panier .container_recap_produit {
+  border: 2px solid #4fb4ee;
+  border-radius: 10px;
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#panier .container_recap_produit .recap_produit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#panier .container_recap_produit .recap_produit .designation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding: 5px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 20px;
+}
+
+#panier .container_recap_produit .prix_total {
+  font-weight: bold;
+  text-align: center;
+  background-color: #4fb4ee;
+  border-radius: 0 0 10px 10px;
+  color: white;
+  padding: 5px 0;
+  margin: -2px;
+}
+
+#panier .vider_panier {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#panier .vider_panier button {
+  font-weight: bold;
+  background-color: #7dceee;
+  border: 1px solid #187db8;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+#panier .total_commande {
+  font-weight: bold;
+  font-size: 18px;
+  font-style: oblique;
+  color: white;
+  background-color: #279add;
+  -webkit-box-shadow: 1px 1px 5px 4px rgba(79, 180, 238, 0.65);
+          box-shadow: 1px 1px 5px 4px rgba(79, 180, 238, 0.65);
+  border-radius: 10px;
+  padding: 5px;
+  text-align: center;
+}
+
+.contact {
+  margin-top: 20px;
+}
+
+.contact .formulaire {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.contact .btn_commander {
+  margin: 20px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.contact .btn_commander #submit {
+  font-weight: bold;
+  background-color: #7dceee;
+  border: 1px solid #187db8;
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+  padding: 5px;
+  outline: none;
+}
+
+#confirmation {
+  padding: 40px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#confirmation h2 {
+  font-family: "Courgette";
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+#confirmation .container_confirmation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+  font-family: "facility";
+  font-size: 18px;
+  margin: auto;
 }
 /*# sourceMappingURL=style.css.map */

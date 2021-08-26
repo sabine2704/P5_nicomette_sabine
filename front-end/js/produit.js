@@ -50,31 +50,60 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
     // Ecouter le bouton et envoyer le panier
     envoyerPanier.addEventListener("click", function (event) {
       if (qte.value > 0 && qte.value < 100) {
-        //   alert("Produit ajouté au panier !");
-
         // Récupération des valeurs sélectionnées :
+        let nom = document.querySelector(".nom").innerText;
+        let qte = parseFloat(document.querySelector("#qte").value);
+        let prix = document.querySelector(".prix").innerText;
+        let couleur = document.querySelector("#option_produit").value;
+        let total = qte * price;
+
         let produitAjoute = {
           idNounours: id,
-          produitSelect: document.querySelector(".nom").innerText,
-          prixProduit: document.querySelector(".prix").innerText,
-          quantité: parseFloat(document.querySelector("#qte").value),
-          couleurChoisit: document.querySelector("#option_produit").value,
+          produitSelect: nom,
+          prixProduit: prix,
+          quantité: qte,
+          couleurChoisit: couleur,
+          prixTotal: euro.format(total / 100),
         };
         console.log(produitAjoute);
 
         //----------------------Localstorage--------------------------
         // Mettre au format JSON les données qui sont en objet dans le localstorage :
         let produitAuPanier = JSON.parse(localStorage.getItem("panier"));
-        //Vérification s'il y a des produits dans le localstorage :
-        if (produitAuPanier) {
+
+        //   Fonction fenêtre popup de confirmation d'ajout au panier :
+        let popupConfirmation = () => {
+          if (
+            window.confirm(
+              `${qte} nounours ${nom} ${couleur}, ajouté(s) au panier.\nPour consulter le panier, cliquez sur OK ou sur ANNULER pour revenir à la page d'accueil des nounours `
+            )
+          ) {
+            window.location.href = "panier.html";
+          } else {
+            window.location.href = "index.html";
+          }
+        };
+
+        // Fonction ajouter un produit selectionné dans le localStorage :
+        const ajoutProduitLocalStorage = () => {
+          // ajout dans le tableau de l'objet avec les values choisi par l'utilisateur :
           produitAuPanier.push(produitAjoute);
+          // transformation en format JSON et envoi dans la key "produit" du localStorage :
           localStorage.setItem("panier", JSON.stringify(produitAuPanier));
+        };
+
+        //Vérification s'il y a des produits dans le localstorage :
+        // s'il y a des produits d'enregistrés dans le localStorage :
+        if (produitAuPanier) {
+          ajoutProduitLocalStorage();
           console.log(produitAuPanier);
+          popupConfirmation();
+          // s'il n'y a pas de produit d'enregistré dans le localStorage :
         } else {
           produitAuPanier = [];
-          produitAuPanier.push(produitAjoute);
-          localStorage.setItem("panier", JSON.stringify(produitAuPanier));
+          ajoutProduitLocalStorage();
           console.log(produitAuPanier);
+          popupConfirmation();
         }
       }
     });
