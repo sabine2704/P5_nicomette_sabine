@@ -44,8 +44,37 @@
       <div id="panier">
         <h2>Votre panier</h2>
         <div class="container_panier"></div>
-      </div>  
-        
+      </div>
+      <div class="contact">
+        <h3>Adresse de livraison et de facturation</h3>
+        <form class="form">
+          <div class="formulaire">
+            <div class="prenom">
+              <label for="firstName">Prénom :</label>
+              <input type="text" name="prenom" id="firstName" required minlength="3" maxlength="30"/>
+            </div>
+            <div class="nom">
+              <label for="lastName">Nom :</label>
+              <input type="text" name="nom" id="lastName" required minlength="3" maxlength="30"/>
+            </div>
+            <div class="adresse">
+              <label for="address">Adresse :</label>
+              <input type="text" name="adresse" id="address" required minlength="3" maxlength="50"/>
+            </div>
+            <div class="ville">
+              <label for="city">Ville :</label>
+              <input type="text" name="ville" id="city" required minlength="2" maxlength="50"/>
+            </div>
+            <div class="mail">
+              <label for="mail">Mail :</label>
+              <input type="email" name="mail" id="mail" required minlength="5" maxlength="30"/>
+            </div>
+          </div>
+          <div class="btn_commander">
+            <input type="button" id="submit" value="Commander" />
+          </div>
+        </form>
+      </div>
     </main>
 
     <footer>
@@ -59,6 +88,7 @@
       </div>
     </footer>
 
+    <script src="js/monnaie.js"></script>
     <script src="js/panier.js"></script>
   </body>
 </html>

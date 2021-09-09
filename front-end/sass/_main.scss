@@ -250,6 +250,11 @@ input#envoyer {
 
 .contact {
   margin-top: 20px;
+  padding: 10px;
+  font-family: "Facility";
+  h3 {
+    text-align: center;
+  }
   .formulaire {
     display: flex;
     gap: 15px;
@@ -272,22 +277,27 @@ input#envoyer {
     }
   }
 }
+input[type=text]:invalid,
+input[type=email]:invalid {
+  box-shadow: 0 0 3px 1px red;
+}
+
 
 //---------------------Main Confirmation de commande----------------------
-#confirmation{
+#confirmation {
   padding: 40px 10px;
   display: flex;
   flex-direction: column;
-  h2{
+  h2 {
     font-family: "Courgette";
     text-align: center;
     font-weight: bold;
     padding-bottom: 20px;
   }
-  .container_confirmation{
+  .container_confirmation {
     display: flex;
     flex-direction: column;
-    gap : 20px;
+    gap: 20px;
     font-family: "facility";
     font-size: 18px;
     margin: auto;

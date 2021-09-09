@@ -467,6 +467,12 @@ input#envoyer {
 
 .contact {
   margin-top: 20px;
+  padding: 10px;
+  font-family: "Facility";
+}
+
+.contact h3 {
+  text-align: center;
 }
 
 .contact .formulaire {
@@ -500,6 +506,12 @@ input#envoyer {
   text-align: center;
   padding: 5px;
   outline: none;
+}
+
+input[type=text]:invalid,
+input[type=email]:invalid {
+  -webkit-box-shadow: 0 0 3px 1px red;
+          box-shadow: 0 0 3px 1px red;
 }
 
 #confirmation {

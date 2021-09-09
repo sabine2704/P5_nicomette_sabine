@@ -25,7 +25,7 @@ if (produitAuPanier === null) {
             <div class="designation">
               <div class="nom">Produit : ${produitAuPanier[i].produitSelect}</div>
               <div class="couleur">Couleur : ${produitAuPanier[i].couleurChoisit}</div>
-              <div class="quantite">Quantité : ${produitAuPanier[i].quantité}</div>
+              <div class="quantite">Quantité : ${produitAuPanier[i].quantite}</div>
               <div class="prix_unitaire">${produitAuPanier[i].prixProduit}</div>
             </div>
           </div>
@@ -40,13 +40,12 @@ if (produitAuPanier === null) {
 }
 
 //----------------------Bouton vider le panier----------------------------
-const viderPanier = `
+// Insertion du bouton dans le HTML :
+containerPanier.insertAdjacentHTML("beforeend", `
   <div class="vider_panier">
     <button class="btn_vider_panier">Vider le panier</button>
   </div>
-`;
-// Insertion du bouton dans le HTML :
-containerPanier.insertAdjacentHTML("beforeend", viderPanier);
+`);
 // Sélection du bouton Vider le panier :
 const btnViderPanier = document.querySelector(".btn_vider_panier");
 // Supression de la key "panier" dans le localStorage pour vider le panier :
@@ -77,13 +76,6 @@ const reducer = (accumulator, currentValue) => accumulator + currentValue;
 const total = calculTotalCommande.reduce(reducer);
 console.log(total);
 
-//Formatage du prix en euros :
-const euro = new Intl.NumberFormat("fr-FR", {
-  style: "currency",
-  currency: "EUR",
-  minimumFractionDigits: 2,
-});
-
 // Afficher le résultat dans le total de la commande en HTML :
 const totalCommande = `
   <div class="total_commande">Total de la commande : ${euro.format(total)}</div>
@@ -93,47 +85,6 @@ const totalCommande = `
 containerPanier.insertAdjacentHTML("beforeend", totalCommande);
 
 //------------------------Formulaire-------------------------------
-const afficherFormulaire = () => {
-  const containerFormulaire = document.querySelector(".container_panier");
-
-  const structureFormulaire = `
-    <div class="contact">
-      <h3>Adresse de livraison et de facturation</h3>
-      <form class="form">
-        <div class="formulaire">
-          <div class="prenom">
-            <label for="firstName">Prénom :</label>
-            <input type="text" name="prenom" id="firstName" required/>
-          </div>
-          <div class="nom">
-            <label for="lastName">Nom :</label>
-            <input type="text" name="nom" id="lastName" required/>
-          </div>
-          <div class="adresse">
-            <label for="address">Adresse :</label>
-            <input type="text" name="adresse" id="address" required/>
-          </div>
-          <div class="ville">
-            <label for="city">Ville :</label>
-            <input type="text" name="ville" id="city" required/>
-          </div>
-          <div class="mail">
-            <label for="email">Mail :</label>
-            <input type="text" name="mail" id="email" required/>
-          </div>
-        </div>
-        <div class="btn_commander">
-          <input type="button" id="submit" value="Commander">
-        </div>
-      </form>
-    </div>
-  `;
-  // Insertion de la DIV total de commande dans le HTML :
-  containerPanier.insertAdjacentHTML("afterend", structureFormulaire);
-};
-
-// Affichage du formulaire :
-afficherFormulaire();
 
 // Sélection du bouton commander :
 const btnCommander = document.querySelector(".btn_commander");
@@ -147,22 +98,20 @@ btnCommander.addEventListener("click", (e) => {
     lastName: document.querySelector("#lastName").value,
     address: document.querySelector("#address").value,
     city: document.querySelector("#city").value,
-    email: document.querySelector("#email").value,
+    email: document.querySelector("#mail").value,
   };
   console.log(contact);
 
   //------------------Vérification du formulaire avant envoi au localStorage----------------
-  document
-    .querySelector(".form input[type='button']")
-    .addEventListener("click", function () {
+  document.querySelector(".form input[type='button']").addEventListener("click", function (){
       let valid = true;
-      for (let input of document.querySelectorAll(".form input")) {
-        valid &= input.reportValidity();
-        if (!valid) {
+      for (let input of document.querySelectorAll(".form input")){
+        valid == input.reportValidity();
+        if(!valid){
           break;
         }
       }
-      if (valid) {
+      if(valid){
         localStorage.setItem("contact", JSON.stringify(contact));
       }
     });

@@ -1,33 +1,25 @@
 let params = new URL(document.location).searchParams;
 let id = params.get("id");
 
-//Formatage du prix en euros :
-const euro = new Intl.NumberFormat("fr-FR", {
-  style: "currency",
-  currency: "EUR",
-  minimumFractionDigits: 2,
-});
-
 // Récupération de l'id du produit sélectionné et mise en forme du formulaire pour ajouter au panier :
 fetch(`http://localhost:3000/api/teddies/${id}`)
   .then((data) => data.json())
   .then((jsonProduit) => {
     console.log(jsonProduit);
     let options = "";
-    const { colors, name, price, imageUrl, description } = jsonProduit;
-    for (let i = 0; i < colors.length; i++) {
-      options += `<option value="${colors[i]}">${colors[i]}</option>`;
+    for (let i = 0; i < jsonProduit.colors.length; i++) {
+      options += `<option value="${jsonProduit.colors[i]}">${jsonProduit.colors[i]}</option>`;
     }
     document.querySelector(
       "#produit"
     ).innerHTML = `<div class="container_produit">
             <div class="image_produit">
-               <img src=${imageUrl} alt="image de nounours">
+               <img src=${jsonProduit.imageUrl} alt="image de nounours">
             </div>
             <div class="container_details">
-               <div class="nom">${name}</div>
-               <div class="prix">Prix : ${euro.format(price / 100)}</div>
-               <div class="description">Description : ${description}</div>
+               <div class="nom">${jsonProduit.name}</div>
+               <div class="prix">Prix : ${euro.format(jsonProduit.price / 100)}</div>
+               <div class="description">Description : ${jsonProduit.description}</div>
                <div class="couleurs">
                   Couleur : <select name="option_couleurs" id="option_produit">
                   <option value="couleur" select="selected">Choissisez votre couleur${options}</option>
@@ -51,19 +43,13 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
     envoyerPanier.addEventListener("click", function (event) {
       if (qte.value > 0 && qte.value < 100) {
         // Récupération des valeurs sélectionnées :
-        let nom = document.querySelector(".nom").innerText;
-        let qte = parseFloat(document.querySelector("#qte").value);
-        let prix = document.querySelector(".prix").innerText;
-        let couleur = document.querySelector("#option_produit").value;
-        let total = qte * price;
-
         let produitAjoute = {
           idNounours: id,
-          produitSelect: nom,
-          prixProduit: prix,
-          quantité: qte,
-          couleurChoisit: couleur,
-          prixTotal: euro.format(total / 100),
+          produitSelect: document.querySelector(".nom").innerText,
+          prixProduit: document.querySelector(".prix").innerText,
+          quantite: parseFloat(document.querySelector("#qte").value),
+          couleurChoisit: document.querySelector("#option_produit").value,
+          prixTotal: euro.format((qte.value * jsonProduit.price) / 100),
         };
         console.log(produitAjoute);
 
@@ -75,7 +61,7 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
         let popupConfirmation = () => {
           if (
             window.confirm(
-              `${qte} nounours ${nom} ${couleur}, ajouté(s) au panier.\nPour consulter le panier, cliquez sur OK ou sur ANNULER pour revenir à la page d'accueil des nounours `
+              `${produitAjoute.quantite} nounours ${produitAjoute.produitSelect} ${produitAjoute.couleurChoisit}, ajouté(s) au panier.\nPour consulter le panier, cliquez sur OK ou sur ANNULER pour revenir à la page d'accueil des nounours `
             )
           ) {
             window.location.href = "panier.html";

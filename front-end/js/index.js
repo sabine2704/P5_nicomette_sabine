@@ -1,10 +1,3 @@
-//Formatage du prix en euros :
-const euro = new Intl.NumberFormat('fr-FR', {
-   style: 'currency',
-   currency: 'EUR',
-   minimumFractionDigits: 2
-   });
-
 //Appel de l'api :
 function fetchData () {
    fetch("http://localhost:3000/api/teddies")
