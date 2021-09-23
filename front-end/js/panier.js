@@ -1,11 +1,10 @@
-let produitAuPanier = JSON.parse(localStorage.getItem("panier"));
-console.log(produitAuPanier);
+let produitAuPanier = recupPanier();
 
 // Sélection de la classe où le code va être injecté :
 const containerPanier = document.querySelector(".container_panier");
 
 // Si le panier est vide, afficher le panier est vide :
-if (produitAuPanier === null) {
+if (produitAuPanier.length == 0) {
   const panierVide = `
   <div class="panier_vide">
     <p>Le panier est vide</p>
@@ -53,7 +52,7 @@ btnViderPanier.addEventListener("click", (e) => {
   e.preventDefault;
   localStorage.removeItem("panier");
   alert("Le panier a été vidé");
-  window.location.href = "panier.html";
+  window.location.assign("panier.html");
 });
 
 //----------------Calcul du montant total de la commande-------------------
@@ -65,7 +64,6 @@ for (let j = 0; j < produitAuPanier.length; j++) {
 
   // Mettre les prix du panier dans tableau calculTotalCommande :
   calculTotalCommande.push(prixDansPanier);
-  console.log(calculTotalCommande);
 }
 
 // Transformer les prix en nombre afin de pouvoir les additionner :
@@ -74,7 +72,6 @@ calculTotalCommande = calculTotalCommande.map((x) => parseFloat(x));
 // Additionner les prix du tableau "prixDansPanier" :
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 const total = calculTotalCommande.reduce(reducer);
-console.log(total);
 
 // Afficher le résultat dans le total de la commande en HTML :
 const totalCommande = `
@@ -86,66 +83,53 @@ containerPanier.insertAdjacentHTML("beforeend", totalCommande);
 
 //------------------------Formulaire-------------------------------
 
-// Sélection du bouton commander :
-const btnCommander = document.querySelector(".btn_commander");
-
-// Envoi du formulaire :
-btnCommander.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  const contact = {
-    firstName: document.querySelector("#firstName").value,
-    lastName: document.querySelector("#lastName").value,
-    address: document.querySelector("#address").value,
-    city: document.querySelector("#city").value,
-    email: document.querySelector("#mail").value,
-  };
-  console.log(contact);
-
-  //------------------Vérification du formulaire avant envoi au localStorage----------------
+  //Vérification du formulaire avant envoi au localStorage
   document.querySelector(".form input[type='button']").addEventListener("click", function (){
-      let valid = true;
-      for (let input of document.querySelectorAll(".form input")){
-        valid == input.reportValidity();
-        if(!valid){
-          break;
-        }
-      }
-      if(valid){
-        localStorage.setItem("contact", JSON.stringify(contact));
-      }
-    });
+    let valid = true;
+    for (let input of document.querySelectorAll(".form input")){
+    valid = valid && input.reportValidity();
+    if(!valid){
+      break;
+    }
+  }
+  if(valid){
+    const contact = {
+      firstName: document.querySelector("#firstName").value,
+      lastName: document.querySelector("#lastName").value,
+      address: document.querySelector("#address").value,
+      city: document.querySelector("#city").value,
+      email: document.querySelector("#mail").value,
+    };
+    localStorage.setItem("contact", JSON.stringify(contact));
 
   // Mettre les valeurs du formulaire et les produits selectionnés dans un objet à envoyer au serveur :
-  let products = produitAuPanier.map((p) => p.idNounours);
-  console.log(products);
-  const order = {
-    contact,
-    products,
-  };
-  console.log(order);
+    let products = produitAuPanier.map((p) => p.idNounours);
+    const order = {
+      contact,
+      products,
+    };
 
-  // Envoi au serveur :
-  const envoiServeur = {
-    method: "POST",
-    body: JSON.stringify(order),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-  console.log(envoiServeur);
+    // Envoi au serveur :
+    const envoiServeur = {
+      method: "POST",
+      body: JSON.stringify(order),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-  let confirmationPrix = euro.format(total);
+    let confirmationPrix = euro.format(total);
 
-  fetch("http://localhost:3000/api/teddies/order", envoiServeur)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      localStorage.setItem("orderId", data.orderId);
-      localStorage.setItem("total", confirmationPrix);
-      document.location.href = "confirmation.html";
-    })
-    .catch((erreur) => {
-      alert("Il y a eu une erreur : " + erreur.message);
-    });
+    fetch("http://localhost:3000/api/teddies/order", envoiServeur)
+      .then((response) => response.json())
+      .then((data) => {
+        
+        localStorage.setItem("orderId", data.orderId);
+        localStorage.setItem("total", confirmationPrix);
+        document.location.assign("confirmation.html");
+      })
+      .catch((erreur) => {
+        alert("Il y a eu une erreur : " + erreur.message);
+      });
+  }
 });

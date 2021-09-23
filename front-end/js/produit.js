@@ -5,7 +5,6 @@ let id = params.get("id");
 fetch(`http://localhost:3000/api/teddies/${id}`)
   .then((data) => data.json())
   .then((jsonProduit) => {
-    console.log(jsonProduit);
     let options = "";
     for (let i = 0; i < jsonProduit.colors.length; i++) {
       options += `<option value="${jsonProduit.colors[i]}">${jsonProduit.colors[i]}</option>`;
@@ -34,8 +33,6 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
             </div>
          </div>`;
 
-    // --------------Gestion du panier-----------------------
-
     // Sélection du bouton ajouter au panier dans le DOM :
     let envoyerPanier = document.querySelector("#envoyer");
 
@@ -51,11 +48,9 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
           couleurChoisit: document.querySelector("#option_produit").value,
           prixTotal: euro.format((qte.value * jsonProduit.price) / 100),
         };
-        console.log(produitAjoute);
 
         //----------------------Localstorage--------------------------
-        // Mettre au format JSON les données qui sont en objet dans le localstorage :
-        let produitAuPanier = JSON.parse(localStorage.getItem("panier"));
+        let produitAuPanier = recupPanier();
 
         //   Fonction fenêtre popup de confirmation d'ajout au panier :
         let popupConfirmation = () => {
@@ -64,9 +59,9 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
               `${produitAjoute.quantite} nounours ${produitAjoute.produitSelect} ${produitAjoute.couleurChoisit}, ajouté(s) au panier.\nPour consulter le panier, cliquez sur OK ou sur ANNULER pour revenir à la page d'accueil des nounours `
             )
           ) {
-            window.location.href = "panier.html";
+            window.location.assign("panier.html");
           } else {
-            window.location.href = "index.html";
+            window.location.assign("index.html");
           }
         };
 
@@ -78,19 +73,10 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
           localStorage.setItem("panier", JSON.stringify(produitAuPanier));
         };
 
-        //Vérification s'il y a des produits dans le localstorage :
         // s'il y a des produits d'enregistrés dans le localStorage :
-        if (produitAuPanier) {
           ajoutProduitLocalStorage();
           console.log(produitAuPanier);
           popupConfirmation();
-          // s'il n'y a pas de produit d'enregistré dans le localStorage :
-        } else {
-          produitAuPanier = [];
-          ajoutProduitLocalStorage();
-          console.log(produitAuPanier);
-          popupConfirmation();
-        }
       }
     });
   })

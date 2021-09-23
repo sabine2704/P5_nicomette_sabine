@@ -5,7 +5,6 @@ function fetchData () {
          return response.json();
       })
       .then(data => {
-         console.log(data);
          const html = data
          // Formatage de la liste des produits :
             .map(boxProduits => {
@@ -26,7 +25,6 @@ function fetchData () {
                `;
             })
             .join("");
-            console.log(html);
             document.querySelector("#teddies").insertAdjacentHTML("afterbegin", html);
          })
       //Message s'il y a une erreur :

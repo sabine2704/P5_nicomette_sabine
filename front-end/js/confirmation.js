@@ -1,7 +1,5 @@
 let montantTotal = localStorage.getItem("total");
-console.log(montantTotal);
 let orderId = localStorage.getItem("orderId");
-console.log(orderId);
 let confirmation = document.querySelector("#confirmation");
 
 let confirmationCommande = `
