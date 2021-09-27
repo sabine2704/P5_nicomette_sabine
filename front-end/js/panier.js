@@ -40,11 +40,14 @@ if (produitAuPanier.length == 0) {
 
 //----------------------Bouton vider le panier----------------------------
 // Insertion du bouton dans le HTML :
-containerPanier.insertAdjacentHTML("beforeend", `
+containerPanier.insertAdjacentHTML(
+  "beforeend",
+  `
   <div class="vider_panier">
     <button class="btn_vider_panier">Vider le panier</button>
   </div>
-`);
+`
+);
 // Sélection du bouton Vider le panier :
 const btnViderPanier = document.querySelector(".btn_vider_panier");
 // Supression de la key "panier" dans le localStorage pour vider le panier :
@@ -83,53 +86,55 @@ containerPanier.insertAdjacentHTML("beforeend", totalCommande);
 
 //------------------------Formulaire-------------------------------
 
-  //Vérification du formulaire avant envoi au localStorage
-  document.querySelector(".form input[type='button']").addEventListener("click", function (){
+//Vérification du formulaire avant envoi au localStorage
+document
+  .querySelector(".form input[type='button']")
+  .addEventListener("click", function () {
     let valid = true;
-    for (let input of document.querySelectorAll(".form input")){
-    valid = valid && input.reportValidity();
-    if(!valid){
-      break;
+    for (let input of document.querySelectorAll(".form input")) {
+      valid = valid && input.reportValidity();
+      if (!valid) {
+        break;
+      }
     }
-  }
-  if(valid){
-    const contact = {
-      firstName: document.querySelector("#firstName").value,
-      lastName: document.querySelector("#lastName").value,
-      address: document.querySelector("#address").value,
-      city: document.querySelector("#city").value,
-      email: document.querySelector("#mail").value,
-    };
-    localStorage.setItem("contact", JSON.stringify(contact));
 
-  // Mettre les valeurs du formulaire et les produits selectionnés dans un objet à envoyer au serveur :
-    let products = produitAuPanier.map((p) => p.idNounours);
-    const order = {
-      contact,
-      products,
-    };
+    if (valid) {
+      const contact = {
+        firstName: document.querySelector("#firstName").value,
+        lastName: document.querySelector("#lastName").value,
+        address: document.querySelector("#address").value,
+        city: document.querySelector("#city").value,
+        email: document.querySelector("#mail").value,
+      };
+      localStorage.setItem("contact", JSON.stringify(contact));
 
-    // Envoi au serveur :
-    const envoiServeur = {
-      method: "POST",
-      body: JSON.stringify(order),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+      // Mettre les valeurs du formulaire et les produits selectionnés dans un objet à envoyer au serveur :
+      let products = produitAuPanier.map((p) => p.idNounours);
+      const order = {
+        contact,
+        products,
+      };
 
-    let confirmationPrix = euro.format(total);
+      // Envoi au serveur :
+      const envoiServeur = {
+        method: "POST",
+        body: JSON.stringify(order),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
 
-    fetch("http://localhost:3000/api/teddies/order", envoiServeur)
-      .then((response) => response.json())
-      .then((data) => {
-        
-        localStorage.setItem("orderId", data.orderId);
-        localStorage.setItem("total", confirmationPrix);
-        document.location.assign("confirmation.html");
-      })
-      .catch((erreur) => {
-        alert("Il y a eu une erreur : " + erreur.message);
-      });
-  }
-});
+      let confirmationPrix = euro.format(total);
+
+      fetch("http://localhost:3000/api/teddies/order", envoiServeur)
+        .then((response) => response.json())
+        .then((data) => {
+          localStorage.setItem("orderId", data.orderId);
+          localStorage.setItem("total", confirmationPrix);
+          document.location.assign("confirmation.html");
+        })
+        .catch((erreur) => {
+          alert("Il y a eu une erreur : " + erreur.message);
+        });
+    }
+  });

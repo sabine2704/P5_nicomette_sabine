@@ -51,23 +51,23 @@
           <div class="formulaire">
             <div class="prenom">
               <label for="firstName">Prénom :</label>
-              <input type="text" name="prenom" id="firstName" required minlength="3" maxlength="30"/>
+              <input type="text" name="prenom" id="firstName" required pattern="[A-Za-zÀ-ú\s]{3,20}" title="Le prénom ne doit contenir que des lettres (minimum 3 caractères et maximum 20)"/>
             </div>
             <div class="nom">
               <label for="lastName">Nom :</label>
-              <input type="text" name="nom" id="lastName" required minlength="3" maxlength="30"/>
+              <input type="text" name="nom" id="lastName" required pattern="[A-Za-zÀ-ú\s]{3,20}" title="Le nom ne doit contenir que des lettres (minimum 3 caractères et maximum 20)"/>
             </div>
             <div class="adresse">
               <label for="address">Adresse :</label>
-              <input type="text" name="adresse" id="address" required minlength="3" maxlength="50"/>
+              <input type="text" name="adresse" id="address" required pattern="[A-Za-zÀ-ÿ0-9'\s]{3,50}" title="L'adresse ne doit contenir que des lettres et des chiffres"/>
             </div>
             <div class="ville">
               <label for="city">Ville :</label>
-              <input type="text" name="ville" id="city" required minlength="2" maxlength="50"/>
+              <input type="text" name="ville" id="city" required pattern="[A-Za-zÀ-ú\s]{3,20}" title="La ville ne doit contenir que des lettres"/>
             </div>
             <div class="mail">
               <label for="mail">Mail :</label>
-              <input type="email" name="mail" id="mail" required minlength="5" maxlength="30"/>
+              <input type="email" name="mail" id="mail" required pattern="^(([^>()[\]\\.,;:\s@]+(\.[^<>()[\]\\.,;:\s@]+)*)|)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$"/>
             </div>
           </div>
           <div class="btn_commander">
@@ -90,6 +90,7 @@
 
     <script src="js/monnaie.js"></script>
     <script src="js/gestionPanier.js"></script>
+    <script src="js/regex.js"></script>
     <script src="js/panier.js"></script>
   </body>
 </html>
